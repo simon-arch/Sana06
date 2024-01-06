@@ -1,4 +1,6 @@
-﻿namespace Inheritance
+﻿using System.Text.RegularExpressions;
+
+namespace Inheritance
 {
     public class Date
     {
@@ -54,6 +56,10 @@
             Patronymic = patronymic;
             BirthDate = birthDate;
         }
+        public virtual string ShowInfo()
+        {
+            return $"{Name}, {Surname}, {Patronymic}, {(int)BirthDate.GetYear()}, {(int)BirthDate.GetMonth()}, {(int)BirthDate.GetDay()}";
+        }
         public void SetName(string name) {if (name.Length > 0) Name = name;}
         public void SetSurname(string surname) {if (surname.Length > 0) Surname = surname;}
         public void SetPatronymic(string patronymic) {if (patronymic.Length > 0) Patronymic = patronymic;}
@@ -75,6 +81,10 @@
             SchoolMark = schoolMark;
             University = university;
         }
+        public override string ShowInfo()
+        {
+            return $"{base.ShowInfo()}, {(int)ZnoMarks.getZnoPriority1()}, {(int)ZnoMarks.getZnoPriority2()}, {(int)ZnoMarks.getZnoPriority3()}, {(int)ZnoMarks.getZnoPriority4()}, {SchoolMark}, {University}";
+        }
         public void SetZnoMarks(ZnoList znomarks) {ZnoMarks = znomarks;}
         public void SetSchoolMark(int schoolmark) {if(SchoolMark > 0 && SchoolMark <= 12) SchoolMark = schoolmark;}
         public void SetUniversity(string university) {if(University.Length > 0) University = university;}
@@ -85,10 +95,10 @@
     public class Student : Person
     {
         protected int Course;
-        protected int Group;
+        protected string Group;
         protected string Faculty;
         protected string University;
-        public Student(string name, string surname, string patronymic, Date birthDate, int course, int group, string faculty, string university) :
+        public Student(string name, string surname, string patronymic, Date birthDate, int course, string group, string faculty, string university) :
             base(name, surname, patronymic, birthDate)
         {
             Course = course;
@@ -96,12 +106,16 @@
             Faculty = faculty;
             University = university;
         }
+        public override string ShowInfo()
+        {
+            return $"{base.ShowInfo()}, {Course}, {Group}, {Faculty}, {University}";
+        }
         public void setCourse(int course) {if (course >= 1 && course <= 4) Course = course;}
-        public void setGroup(int group) {if (group > 0) Group = group; }
+        public void setGroup(string group) {if (group.Length > 0) Group = group; }
         public void setFaculty(string faculty) {if (faculty.Length > 0) Faculty = faculty;}
         public void setUniversity(string university) {if (university.Length > 0) University = university;}
         public int getCourse() {return Course;}
-        public int getGroup() {return Group;}
+        public string getGroup() {return Group;}
         public string getFaculty() {return Faculty;}
         public string getUniversity() {return University;}
 
@@ -117,6 +131,10 @@
             Position = position;
             Cathedra = cathedra;
             University = university;
+        }
+        public override string ShowInfo()
+        {
+            return $"{base.ShowInfo()}, {Position}, {Cathedra}, {University}";
         }
         public void setPosition(string position) {if(position.Length > 0) Position = position;}
         public void setCathedra(string cathedra) {if(cathedra.Length > 0) Cathedra = cathedra;}
@@ -136,6 +154,10 @@
             ReaderTicket = readerTicket;
             IssueDate = issueDate;
             MonthlyContribution = monthlyContribution;
+        }
+        public override string ShowInfo()
+        {
+            return $"{base.ShowInfo()}, {ReaderTicket}, {(int)BirthDate.GetYear()}, {(int)BirthDate.GetMonth()}, {(int)BirthDate.GetDay()}, {MonthlyContribution}";
         }
         public void setReaderTicket(int readerTicket) {if(readerTicket > 0) ReaderTicket = readerTicket;}
         public void setIssueDate(Date issueDate) {IssueDate = issueDate;}
