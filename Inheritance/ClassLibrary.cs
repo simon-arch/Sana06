@@ -18,6 +18,29 @@
         public int GetMonth() {return Month;}
         public int GetYear() {return Year;}
     }
+    public class ZnoList
+    {
+        protected int ZnoPriority1;
+        protected int ZnoPriority2;
+        protected int ZnoPriority3;
+        protected int ZnoPriority4;
+        public ZnoList(int znoPriority1, int znoPriority2, int znoPriority3, int znoPriority4)
+        {
+            ZnoPriority1 = znoPriority1;
+            ZnoPriority2 = znoPriority2;
+            ZnoPriority3 = znoPriority3;
+            ZnoPriority4 = znoPriority4;
+        }
+        public void setZnoPriority1(int znoPriority1) {if (ZnoPriority1 > 0 && ZnoPriority1 <= 200) ZnoPriority1 = znoPriority1;}
+        public void setZnoPriority2(int znoPriority2) {if (ZnoPriority2 > 0 && ZnoPriority2 <= 200) ZnoPriority2 = znoPriority2;}
+        public void setZnoPriority3(int znoPriority3) {if (ZnoPriority3 > 0 && ZnoPriority3 <= 200) ZnoPriority3 = znoPriority3;}
+        public void setZnoPriority4(int znoPriority4) {if (ZnoPriority4 > 0 && ZnoPriority2 <= 200) ZnoPriority4 = znoPriority4;}
+        public int getZnoPriority1() {return ZnoPriority1;}
+        public int getZnoPriority2() {return ZnoPriority2;}
+        public int getZnoPriority3() {return ZnoPriority3;}
+        public int getZnoPriority4() {return ZnoPriority4;}
+
+    }
     public class Person
     {
         protected string Name;
@@ -42,16 +65,22 @@
     }
     public class Enrollee : Person
     {
-        protected int ZnoMark;
+        protected ZnoList ZnoMarks;
         protected int SchoolMark;
         protected string University;
-        public Enrollee(string name, string surname, string patronymic, Date birthDate, int znoMark, int schoolMark, string university) : 
+        public Enrollee(string name, string surname, string patronymic, Date birthDate, ZnoList znoMarks, int schoolMark, string university) : 
             base(name, surname, patronymic, birthDate)
         {
-            ZnoMark = znoMark;
+            ZnoMarks = znoMarks;
             SchoolMark = schoolMark;
             University = university;
         }
+        public void SetZnoMarks(ZnoList znomarks) {ZnoMarks = znomarks;}
+        public void SetSchoolMark(int schoolmark) {if(SchoolMark > 0 && SchoolMark <= 12) SchoolMark = schoolmark;}
+        public void SetUniversity(string university) {if(University.Length > 0) University = university;}
+        public ZnoList GetZnoMarks() {return ZnoMarks;}
+        public int GetSchoolMark() {return SchoolMark;}
+        public string GetUniversity() {return University;}
     }
     public class Student : Person
     {
@@ -67,6 +96,15 @@
             Faculty = faculty;
             University = university;
         }
+        public void setCourse(int course) {if (course >= 1 && course <= 4) Course = course;}
+        public void setGroup(int group) {if (group > 0) Group = group; }
+        public void setFaculty(string faculty) {if (faculty.Length > 0) Faculty = faculty;}
+        public void setUniversity(string university) {if (university.Length > 0) University = university;}
+        public int getCourse() {return Course;}
+        public int getGroup() {return Group;}
+        public string getFaculty() {return Faculty;}
+        public string getUniversity() {return University;}
+
     }
     public class Professor : Person
     {
@@ -80,6 +118,12 @@
             Cathedra = cathedra;
             University = university;
         }
+        public void setPosition(string position) {if(position.Length > 0) Position = position;}
+        public void setCathedra(string cathedra) {if(cathedra.Length > 0) Cathedra = cathedra;}
+        public void setUniversity(string university) {if(university.Length > 0) University = university;}
+        public string getPosition() {return Position;}
+        public string getCathedra() {return Cathedra;}
+        public string getUniversity() {return University;}
     }
     public class LibraryUser : Person
     {
@@ -93,5 +137,11 @@
             IssueDate = issueDate;
             MonthlyContribution = monthlyContribution;
         }
+        public void setReaderTicket(int readerTicket) {if(readerTicket > 0) ReaderTicket = readerTicket;}
+        public void setIssueDate(Date issueDate) {IssueDate = issueDate;}
+        public void setMonthlyContribution(int monthlyContribution) {if(monthlyContribution >= 0) MonthlyContribution = monthlyContribution;}
+        public int getReaderTicket() {return ReaderTicket;}
+        public Date getIssueDate() {return IssueDate;}
+        public int getMonthlyContribution() {return MonthlyContribution;}
     }
 }
