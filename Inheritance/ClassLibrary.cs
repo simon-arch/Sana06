@@ -33,7 +33,7 @@ public class ZnoList
     public void setZnoPriority1(int znoPriority1) {if(ZnoPriority1 > 0 && ZnoPriority1 <= 200) ZnoPriority1 = znoPriority1;}
     public void setZnoPriority2(int znoPriority2) {if(ZnoPriority2 > 0 && ZnoPriority2 <= 200) ZnoPriority2 = znoPriority2;}
     public void setZnoPriority3(int znoPriority3) {if(ZnoPriority3 > 0 && ZnoPriority3 <= 200) ZnoPriority3 = znoPriority3;}
-    public void setZnoPriority4(int znoPriority4) {if(ZnoPriority4 > 0 && ZnoPriority2 <= 200) ZnoPriority4 = znoPriority4;}
+    public void setZnoPriority4(int znoPriority4) {if(ZnoPriority4 > 0 && ZnoPriority4 <= 200) ZnoPriority4 = znoPriority4;}
     public int getZnoPriority1() {return ZnoPriority1;}
     public int getZnoPriority2() {return ZnoPriority2;}
     public int getZnoPriority3() {return ZnoPriority3;}
